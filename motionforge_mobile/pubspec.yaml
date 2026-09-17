@@ -1,0 +1,43 @@
+name: motionforge_mobile
+description: Professional mobile motion editor (CapCut/Alight Motion style)
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # إدارة الحالة خفيفة الوزن وسريعة، لا تعيد بناء الشجرة كاملة عند كل تعديل بسيط
+  flutter_riverpod: ^2.5.1
+  # فك تشفير الفيديو واستخراج الفريمات + التلاعب بالوسائط (يعتمد على محركات أصلية)
+  ffmpeg_kit_flutter_new: ^1.4.0
+  video_player: ^2.9.1
+  # الوصول لملفات الجهاز (استيراد فيديوهات/صور)
+  file_picker: ^8.0.0
+  # ضغط/تصغير الفيديو تلقائياً لإنشاء نسخ Proxy منخفضة الدقة للمعاينة الحية
+  video_compress: ^3.1.3
+  # الوصول لمجلدات التخزين المؤقت الخاصة بالتطبيق (Thumbnails/Proxies/Waveforms)
+  path_provider: ^2.1.3
+  # منع دخول الهاتف بوضع السكون أثناء عملية التصدير الطويلة
+  wakelock_plus: ^1.2.8
+  # حفظ الفيديو النهائي مباشرة في معرض الصور/الفيديوهات لكل من أندرويد وآيفون
+  gal: ^2.3.0
+  # إشعار المستخدم فور اكتمال التصدير (حتى لو غادر التطبيق للخلفية)
+  flutter_local_notifications: ^17.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  # تسجيل ملفات الـ Shaders ليتمكن dart:ui FragmentProgram من تحميلها وقت التشغيل
+  shaders:
+    - shaders/blur.frag
+    - shaders/color_correction.frag
+    - shaders/glow.frag
+    - shaders/chroma_key.frag
